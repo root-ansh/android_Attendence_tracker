@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() { // god this is too weird , it has cha
         * UI : sortable, multi select
         * UI : place holder when data is 0
         * UI: navigation drawer/ about page/settings
+        * Ui: delete all button dialog
         *
         *
         *
