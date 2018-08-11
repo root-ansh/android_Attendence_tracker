@@ -8,6 +8,78 @@
     tools:context=".MainActivity">
 
 
+    <LinearLayout
+        android:id="@+id/placholderMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+
+            android:layout_gravity="center|top"
+            android:layout_margin="36dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/placeholder_logo"
+
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+
+            android:text="Welcome to Attendence tracker . Now its easy to track your attendence anytime!"
+            android:textColor="#cccccc"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:drawableStart="@drawable/ic_add_white"
+
+            android:drawablePadding="10dp"
+            android:drawableTint="#cccccc"
+            android:padding="8dp"
+            android:text="Tap plus icon to add new subject."
+
+
+            android:textColor="#cccccc" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:drawableStart="@drawable/ic_attending_filled"
+
+            android:drawablePadding="10dp"
+            android:drawableTint="#cccccc"
+            android:padding="8dp"
+            android:text="Tap this icon if you attended the lecture."
+            android:textColor="#cccccc" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:drawableStart="@drawable/ic_miss_filled"
+
+            android:drawablePadding="10dp"
+            android:drawableTint="#cccccc"
+            android:padding="8dp"
+            android:text="Tap this icon if you missed the lecture."
+            android:textColor="#cccccc" />
+
+
+    </LinearLayout>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvLectures"
@@ -16,9 +88,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageButton
@@ -26,27 +96,25 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
 
-        android:minHeight="60dp"
+        android:background="@drawable/fabadd_bg"
+        android:elevation="5dp"
+
         android:minWidth="60dp"
+        android:minHeight="60dp"
 
         android:src="@drawable/fabadd_ic"
-        android:background="@drawable/fabadd_bg"
-
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.97"
-        app:layout_constraintHorizontal_bias="0.97"
         app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
-        android:elevation="5dp"
+        app:layout_constraintVertical_bias="0.97"
 
 
         tools:ignore="ContentDescription"
         tools:targetApi="lollipop" />
-
-
 
 
 </android.support.constraint.ConstraintLayout>

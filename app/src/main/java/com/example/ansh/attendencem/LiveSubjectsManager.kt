@@ -1,12 +1,13 @@
-package com.example.ansh.attendencem.DBFiles
+package com.example.ansh.attendencem
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.util.Log
-import com.example.ansh.attendencem.SubjectModel
+import com.example.ansh.attendencem.DBFiles.AppDB
+import com.example.ansh.attendencem.DBFiles.SubjectsDao
 
-class SubjectsManager(application: Application) : AndroidViewModel(application) {
+class LiveSubjectsManager(application: Application) : AndroidViewModel(application) {
     private val TAG ="$$ SUBJECTS_MANAGER $$"
     private var queryHandler: SubjectsDao? = null
 

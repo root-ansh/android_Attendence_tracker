@@ -2,13 +2,10 @@ package com.example.ansh.attendencem
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.example.ansh.attendencem.DBFiles.SubjectsManager
 import kotlinx.android.synthetic.main.activity_test.*
-import java.util.*
 
 class TestActivity : AppCompatActivity() {
     val TAG: String = "TestActivity"
@@ -19,14 +16,18 @@ class TestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
 
-
-
         Log.e(TAG, "onCreate: called")
+
+       // variousTests()
+
+    }
+
+    private fun variousTests() {
 
         val subjectsManager =
                 ViewModelProviders
                         .of(this@TestActivity)
-                        .get(SubjectsManager::class.java)
+                        .get(LiveSubjectsManager::class.java)
 
         Log.e(TAG, "--onCreate: created subjects manager")
         enableLiveUpdates(subjectsManager)// this method
@@ -36,7 +37,7 @@ class TestActivity : AppCompatActivity() {
         test_btAddNew.setOnClickListener {
             Log.e(TAG, "btAdd new: clicked")
 
-            UiUtils.test_showSubjectEditorDialog(this@TestActivity,subjectsManager,null)
+            UiUtils.showSubjectEditorDialog(this@TestActivity,subjectsManager,null)
         }
 
         testbtDeleteEntry.setOnClickListener { view ->
@@ -85,19 +86,18 @@ class TestActivity : AppCompatActivity() {
             Log.e(TAG, "test_btshowInEditorDialog: position selected : ${x} ")
 
             if (x != null) {
-                UiUtils.test_showSubjectEditorDialog(this@TestActivity,subjectsManager,datalistLocalCopy?.get(x))
-               // UiUtils.test_showSubjectEditorDialog(this@TestActivity, datalistLocalCopy?.get(x),subjectsManager)
+                UiUtils.showSubjectEditorDialog(this@TestActivity,subjectsManager,datalistLocalCopy?.get(x))
+                // UiUtils.test_showSubjectEditorDialog(this@TestActivity, datalistLocalCopy?.get(x),liveSubjectsManager)
             }
         }
 
-
     }
 
-    private fun enableLiveUpdates(subjectsManager: SubjectsManager) {
+    private fun enableLiveUpdates(liveSubjectsManager: LiveSubjectsManager) {
         Log.e(TAG, "enableLiveUpdates: ")
 
 
-        subjectsManager.getAllSubjects().observe(this@TestActivity, Observer { subjectList ->
+        liveSubjectsManager.getAllSubjects().observe(this@TestActivity, Observer { subjectList ->
             Log.e(TAG, "getAllSubjectsObserver:triggered ")
             Log.e(TAG, "getAllSubjectsObserver:recieved list: ${subjectList} ")
 

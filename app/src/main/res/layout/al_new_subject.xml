@@ -19,7 +19,7 @@
         android:padding="5dp"
         android:gravity="center"
 
-        android:text="Create New Subject"
+        android:text="Subject Details"
         />
 
     <com.rengwuxian.materialedittext.MaterialEditText
@@ -37,7 +37,7 @@
 
         android:textSize="18sp"
         android:textStyle="bold"
-        android:hint="Subject Name"
+        android:hint="Enter Subject Name"
 
         app:met_floatingLabel="highlight"
         app:met_hideUnderline="true"

@@ -1,15 +1,12 @@
-package com.example.ansh.attendencem;
+package com.example.ansh.attendencem
 
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.Toast
 
-public class temp{
-
-
-}
+class temp
 
 /*
 public class temp extends AppCompatActivity {

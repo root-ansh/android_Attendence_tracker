@@ -10,7 +10,6 @@ import android.os.Vibrator
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import com.example.ansh.attendencem.DBFiles.SubjectsManager
 import kotlinx.android.synthetic.main.al_new_subject.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -18,139 +17,25 @@ import java.util.*
 object UiUtils {
     private val TAG = "UiUTILS"
 
-    fun showSubjectEditorDialog(context: Context, data: SubjectModel? = SubjectModel()) {//data won't be ever null becaue we covered it with empty default object and context is always mandatory
-        Log.e(TAG, "showSubjectEditorDialog :called with args:$context,$data")
 
-
-        @SuppressLint("InflateParams")// for null root, not any problem tho: https://stackoverflow.com/questions/24832497
-        val v = LayoutInflater
-                .from(context)
-                .inflate(R.layout.al_new_subject, null, false)
-
-        setViewsInternalActions(v!!, data!!)
-
-
-        var dialog = AlertDialog.Builder(context)
-                .setCancelable(false)
-                .setNeutralButton("Delete Subject!", getDialogActions2(data))
-                .setPositiveButton("Done ", getDialogActions2(data))
-                .setNegativeButton("Cancel ", getDialogActions2(data))
-                .setView(v)
-                .create()
-
-        dialog.setOnShowListener {
-
-            dialog.getButton(android.support.v7.app.AlertDialog.BUTTON_NEUTRAL)
-                    .setTextColor(getColorFromResources(dialog.context, R.color.g_red))
-            dialog.getButton(android.support.v7.app.AlertDialog.BUTTON_POSITIVE)
-                    .setTextColor(getColorFromResources(dialog.context, R.color.g_blue))
-            dialog.getButton(android.support.v7.app.AlertDialog.BUTTON_NEGATIVE)
-                    .setTextColor(getColorFromResources(dialog.context, R.color.g_blue))
-
-        }
-        dialog.show()
-
-
-    }
-    private fun setViewsInternalActions(v: View, data: SubjectModel) {
-        Log.e(TAG, "setViewsInternalActions: called with data:$data, view:$v")
-
-        v.al_etSubjectName.setText("${data.subjectName}")
-        v.al_etTotal.setText("${data.total}")
-        v.al_etAttended.setText("${data.attended}")
-
-        v.al_btAttend.setOnClickListener {
-            data.total++
-            v.al_etTotal.setText("${data.total}")
-
-            data.attended++
-            v.al_etAttended.setText("${data.attended}")
-        }
-        v.al_btMiss.setOnClickListener {
-            data.total++
-            v.al_etTotal.setText("${data.total}")
-        }
-
-    }
-    private fun getDialogActions2(data: SubjectModel? = SubjectModel()): DialogInterface.OnClickListener {
-        Log.e(TAG, "[PRIVATE]getDialogActions:called with args:$data")
-
-
-        return DialogInterface.OnClickListener { dialog, buttonID ->
-            dialog.dismiss()
-
-        }
-    }
-
-
-    fun getColorFromResources(context: Context, colorID: Int): Int {
-
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            context.resources.getColor(colorID, context.theme)
-        } else {
-            @Suppress("DEPRECATION")
-            context.resources.getColor(colorID)
-        }
-
-    }
-    fun getTextDate(): CharSequence? {
-
-        val df = SimpleDateFormat("EEE, dd MMM yyyy ", Locale.getDefault())
-        return df.format(Calendar.getInstance().time)
-
-    }
-
-
-    object SubjAdapterUtils {
-        private const val TAG = "Utils.SubjAdapter"
-
-        @Suppress("DEPRECATION")
-        fun vibrate(context: Context, miliSec: Long) {
-            // needs system's permission in manifest
-            val v = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                v.vibrate(VibrationEffect.createOneShot(miliSec, VibrationEffect.DEFAULT_AMPLITUDE))
-            } else {
-                //deprecated in API 26
-                v.vibrate(miliSec)
-            }
-        }
-
-
-        fun getPercentage(attended: Int, total: Int): Double {
-            if (total == 0) {
-                return 0.00
-            } else {
-                var x = (attended).toDouble() / total.toDouble() * 100.00
-                val factor = Math.pow(10.0, 2.00).toLong()
-
-                x *= factor
-                return Math.round(x).toDouble() / factor
-            }
-        }
-
-
-    }
-
-    //data won't be ever null because we covered it with empty default object and context
-    // is always mandatory
     private enum class DialogDataType{FLAG_NEW_DATA,FLAG_OLD_DATA}
-    fun test_showSubjectEditorDialog(context: Context,
-                                     subjectsManager: SubjectsManager,data: SubjectModel?) {
+    //data won't be ever null because we covered it with empty default object and context, manager
+    // are always mandatory
+    fun showSubjectEditorDialog(context: Context,
+                                liveSubjectsManager: LiveSubjectsManager, data: SubjectModel?) {
 
         if(data==null){
-            _test_showSubjectEditorDialog(context, SubjectModel(),subjectsManager,DialogDataType.FLAG_NEW_DATA)
+            _showSubjectEditorDialog(context, SubjectModel(),liveSubjectsManager,DialogDataType.FLAG_NEW_DATA)
         }
         else{
-            _test_showSubjectEditorDialog(context,data,subjectsManager,DialogDataType.FLAG_OLD_DATA)
+            _showSubjectEditorDialog(context,data,liveSubjectsManager,DialogDataType.FLAG_OLD_DATA)
 
         }
 
     }
 
-
-    private fun _test_showSubjectEditorDialog(ctx: Context, data: SubjectModel
-                                              , mngr: SubjectsManager, dataType: DialogDataType) {
+    private fun _showSubjectEditorDialog(ctx: Context, data: SubjectModel
+                                         , mngr: LiveSubjectsManager, dataType: DialogDataType) {
 
 
         @SuppressLint("InflateParams")      // for null root, not any problem tho: https://stackoverflow.com/questions/24832497
@@ -158,15 +43,15 @@ object UiUtils {
                 .from(ctx)
                 .inflate(R.layout.al_new_subject, null, false)
 
-        _test_setViewsInternalActions(v, data)
+        _setViewsInternalActions(v, data)
 
 
 
         val dialog = AlertDialog.Builder(ctx)
                 .setCancelable(false)
-                .setNeutralButton("Delete Subject", _test_getDialogActions2(v,data, mngr,dataType))
-                .setPositiveButton("Done ", _test_getDialogActions2(v,data, mngr, dataType))
-                .setNegativeButton("Cancel ", _test_getDialogActions2(v,data, mngr, dataType))
+                .setNeutralButton("Delete Subject", _getDialogActions2(v,data, mngr,dataType))
+                .setPositiveButton("Done ", _getDialogActions2(v,data, mngr, dataType))
+                .setNegativeButton("Cancel ", _getDialogActions2(v,data, mngr, dataType))
                 .setView(v)
                 .create()
 
@@ -184,8 +69,7 @@ object UiUtils {
 
 
     }
-
-    private fun _test_setViewsInternalActions(v: View, data: SubjectModel) {
+    private fun _setViewsInternalActions(v: View, data: SubjectModel) {
         Log.e(TAG, "setViewsInternalActions: called with data:$data, view:$v")
 
         v.al_etSubjectName.setText("${data.subjectName}")
@@ -207,11 +91,10 @@ object UiUtils {
          view* when pressed update/delete/modify*/
 
     }
-
-    private fun _test_getDialogActions2(
+    private fun _getDialogActions2(
             view:View, //view in case the data is modified and we need to get latest changes
             data: SubjectModel = SubjectModel(),//data(old or new)
-            mngr: SubjectsManager,
+            mngr: LiveSubjectsManager,
             dataFlag: DialogDataType): DialogInterface.OnClickListener {
         /*NOTE
         we shoud basically use the same flag principle for old or new data, but we are just
@@ -277,6 +160,59 @@ object UiUtils {
 
         }
     }
+
+
+    fun getColorFromResources(context: Context, colorID: Int): Int {
+
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            context.resources.getColor(colorID, context.theme)
+        } else {
+            @Suppress("DEPRECATION")
+            context.resources.getColor(colorID)
+        }
+
+    }
+    fun getTextDate(): CharSequence? {
+
+        val df = SimpleDateFormat("EEE, dd MMM yyyy ", Locale.getDefault())
+        return df.format(Calendar.getInstance().time)
+
+    }
+
+
+    object SubjAdapterUtils {
+        private const val TAG = "Utils.SubjAdapter"
+
+        @Suppress("DEPRECATION")
+        fun vibrate(context: Context, miliSec: Long) {
+            Log.e(TAG,"vibrate: ")
+            // needs system's permission in manifest
+            val v = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                v.vibrate(VibrationEffect.createOneShot(miliSec, VibrationEffect.DEFAULT_AMPLITUDE))
+            } else {
+                //deprecated in API 26
+                v.vibrate(miliSec)
+            }
+        }
+
+
+        fun getPercentage(attended: Int, total: Int): Double {
+            if (total == 0) {
+                return 0.00
+            } else {
+                var x = (attended).toDouble() / total.toDouble() * 100.00
+                val factor = Math.pow(10.0, 2.00).toLong()
+
+                x *= factor
+                return Math.round(x).toDouble() / factor
+            }
+        }
+
+
+    }
+
+
 
 
 }
