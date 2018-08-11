@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/g_blue"
+        android:textColor="#fff"
+        android:textSize="14dp"
+        android:padding="5dp"
+        android:gravity="center"
+
+        android:text="Create New Subject"
+        />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/al_etSubjectName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
+        android:padding="4dp"
+        android:ellipsize="end"
+
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:hint="Subject Name"
+
+        app:met_floatingLabel="highlight"
+        app:met_hideUnderline="true"
+        app:met_textColor="#000"
+        app:met_baseColor="#000"
+        app:met_floatingLabelTextColor="@color/blue"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/al_etAttended"
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:layout_margin="8dp"
+            android:ellipsize="end"
+
+            android:textSize="16dp"
+            android:hint="Attended"
+            android:gravity="center"
+            android:inputType="number"
+
+            app:met_floatingLabel="normal"
+            app:met_hideUnderline="false"
+            app:met_textColor="#000"
+            app:met_baseColor="#000"
+            app:met_floatingLabelTextColor="@color/g_blue"
+            />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/al_etTotal"
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:layout_margin="8dp"
+            android:ellipsize="end"
+
+            android:textSize="16dp"
+            android:hint="Total"
+            android:gravity="center"
+            android:inputType="number"
+
+            app:met_floatingLabel="highlight"
+            app:met_hideUnderline="false"
+            app:met_textColor="#000"
+            app:met_baseColor="#000"
+            app:met_floatingLabelTextColor="@color/g_blue"
+            />
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/al_btAttend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:drawableStart="@drawable/ic_attending_filled"
+            android:background="@drawable/bg_al_btn_attend"
+            android:padding="10dp"
+            android:drawablePadding="10dp"
+            android:text=" Attend     "
+
+
+            android:textColor="#ffffff"
+           android:layout_margin="8dp"
+            />
+        <Button
+            android:id="@+id/al_btMiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="     Miss     "
+            android:drawableStart="@drawable/ic_miss_filled"
+            android:background="@drawable/bg_al_btn_miss"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:drawablePadding="10dp"
+            android:layout_margin="8dp"
+            />
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
