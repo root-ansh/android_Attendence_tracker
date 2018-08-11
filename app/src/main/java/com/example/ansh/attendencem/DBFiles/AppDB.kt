@@ -7,7 +7,7 @@ import android.content.Context
 import com.example.ansh.attendencem.SubjectModel
 
 @Database(entities = arrayOf(SubjectModel::class), version = 1)
-abstract class AppDB private constructor(): RoomDatabase() {
+abstract class AppDB : RoomDatabase() {
 
     abstract fun allActions(): SubjectsDao
 

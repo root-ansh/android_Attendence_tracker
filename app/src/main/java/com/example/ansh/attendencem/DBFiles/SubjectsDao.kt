@@ -21,8 +21,8 @@ interface SubjectsDao{
     fun removeSubjectByID(i:Int)
 
 
-    @Query("SELECT * FROM AllSubjectstable WHERE _id = :_subjectID")
-    fun getSubjectByID(_subjectID:Int): SubjectModel
+    @Query("SELECT * FROM AllSubjectstable WHERE _id = :subjectID")
+    fun getSubjectByID(subjectID:Int): SubjectModel
 
     @Query("SELECT * FROM AllSubjectstable")
     fun getAllSubjects(): LiveData<List<SubjectModel>>

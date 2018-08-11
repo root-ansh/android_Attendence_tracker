@@ -1,34 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TestActivity">
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        app:cardBackgroundColor="#fff"
-        app:cardCornerRadius="2dp"
-        app:cardUseCompatPadding="true"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        app:layout_constraintVertical_bias="0.0">
-
-        <android.support.constraint.ConstraintLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textSubject"
-                android:layout_width="0dp"
+                android:id="@+id/test_SubjectName"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:background="#940088"
@@ -40,167 +29,137 @@
                 android:textColor="#ffffff"
                 android:textSize="12dp"
 
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.05" />
+                />
 
-            <ImageButton
-                android:id="@+id/btAttend"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-
-                android:layout_margin="8dp"
-
-                android:background="@android:color/transparent"
-                android:clickable="true"
-
-                android:elevation="5dp"
-                android:focusable="true"
-
-                android:minWidth="50dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/bt_attending"
-
-                app:layout_constraintBottom_toBottomOf="@+id/btMiss"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btMiss"
-
-                tools:ignore="ContentDescription"
-                tools:targetApi="lollipop" />
-
-            <ImageButton
-                android:id="@+id/btMiss"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-
-                android:layout_margin="8dp"
-
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:elevation="5dp"
-                android:focusable="true"
-
-                android:minWidth="44dp"
-                android:scaleType="fitXY"
-
-                android:src="@drawable/bt_miss"
-                app:layout_constraintBottom_toBottomOf="@+id/textTotalAttendence"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintStart_toEndOf="@id/btAttend"
-                app:layout_constraintTop_toBottomOf="@+id/textSubject"
-                app:layout_constraintVertical_bias="0.671"
-                tools:ignore="ContentDescription"
-                tools:targetApi="lollipop" />
-
-            <TextView
-                android:id="@+id/textTotalAttendence"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:maxLines="1"
-
-
-                android:text="21/30"
-                android:textSize="16dp"
-
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textSubject"
-                app:layout_constraintVertical_bias="0.97"
-
-                tools:ignore="ContentDescription"
-                tools:targetApi="lollipop" />
-
-            <TextView
-                android:id="@+id/textPercentage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_margin="8dp"
-
-
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:maxLines="1"
-                android:text="90%"
-                android:textSize="50dp"
-
-                android:textStyle="italic"
-
-                android:typeface="serif"
-
-                app:layout_constraintBottom_toBottomOf="@+id/textTotalAttendence"
-                app:layout_constraintEnd_toEndOf="@id/textSubject"
-                app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toEndOf="@+id/btMiss"
-                app:layout_constraintTop_toBottomOf="@id/textSubject"
-                app:layout_constraintVertical_bias="0.5"
-                tools:targetApi="lollipop" />
-
-        </android.support.constraint.ConstraintLayout>
+        </FrameLayout>
         
-    </android.support.v7.widget.CardView>
+
+    </android.support.v4.widget.NestedScrollView>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btAddNew"
+    <ImageButton
+        android:id="@+id/test_btAttend"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
 
+        android:layout_margin="8dp"
+
+        android:background="@android:color/transparent"
+        android:clickable="true"
+
+        android:elevation="5dp"
+        android:focusable="true"
+
+        android:minWidth="50dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bt_attending"
+
+        android:layout_gravity="center|start"
+
+        tools:ignore="ContentDescription"
+        tools:targetApi="lollipop" />
+
+    <ImageButton
+        android:id="@+id/test_btMiss"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+
+
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="150dp"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:elevation="5dp"
+        android:focusable="true"
+
+        android:minWidth="44dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bt_miss"
+
+        android:tint="@color/orange"
+
+        android:layout_gravity="start"
+
+        tools:ignore="ContentDescription"
+        tools:targetApi="lollipop" />
+
+    <Button
+        android:id="@+id/test_btshowInEditorDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
 
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-
-        app:fabSize="normal"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center"
+        android:maxLines="1"
 
 
+        android:text="Will showOrModifyEntry"
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btDeleteEntry"
+        android:layout_gravity="center|bottom"
+
+        tools:ignore="ContentDescription"
+        tools:targetApi="lollipop" />
 
 
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/test_et_modifypos"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
 
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:background="@color/colorPrimary"
+        android:digits="0123456789"
+        android:hint="modify pos(0 to ...)"
+        android:inputType="number"
 
-        app:fabSize="normal"
+        android:padding="10dp"
+        android:textColor="@color/white"
 
-        app:backgroundTint="@color/orange"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="DeleteButton"
-
+        android:layout_gravity="center"
         />
 
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/test_btAddNew"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_gravity="end|bottom"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_add_white"
+
+        app:fabSize="normal" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/testbtDeleteEntry"
+
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_gravity="start|bottom"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+
+        android:layout_marginBottom="8dp"
+
+        android:contentDescription="DeleteButton"
+
+        app:backgroundTint="@color/orange"
+
+        app:fabSize="normal" />
+
+
+</FrameLayout>

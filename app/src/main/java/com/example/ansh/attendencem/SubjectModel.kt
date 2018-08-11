@@ -8,7 +8,7 @@ class SubjectModel {
 
     @PrimaryKey(autoGenerate = true)
     var _id: Long = 0
-    var subjectName: String? = null
+    var subjectName: String? = ""//null, when testing
     var attended: Int = 0
     var total: Int = 0
 
