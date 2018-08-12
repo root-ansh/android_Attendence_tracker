@@ -16,6 +16,7 @@
         * UI: navigation drawer/ about page/settings
         * Ui: delete all button dialog
         * Ui: if screen is bigger, we can have a staggerred grid like view
+        * MAKE A WIDGET OF THIS
         *
         *
 * */
