@@ -15,7 +15,7 @@
         * UI : place holder when data is 0
         * UI: navigation drawer/ about page/settings
         * Ui: delete all button dialog
-        *
+        * Ui: if screen is bigger, we can have a staggerred grid like view
         *
         *
 * */
