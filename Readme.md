@@ -1,3 +1,13 @@
+# Attendence-tracker
+A simple way to track your subject wise Attendance manually.
+
+<p align="center"> 
+<img src="https://root-ansh.github.io/curioustools/tab_projects/img/att_2.png" height="400" width="200">
+<img src="https://root-ansh.github.io/curioustools/tab_projects/img/att_3.png" height="400" width="200">
+<img src="https://root-ansh.github.io/curioustools/tab_projects/img/att_1.png" height="400" width="200">
+</p>  
+
+
 ```
 /*todo
         *
